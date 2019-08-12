@@ -12,7 +12,7 @@ class Event < ApplicationRecord
 
 	validates :description, presence: true, length: { in: 20..1000 }
 
-	validates :price, presence: true, numericality: { only_integer: true, in: 1..1000 }
+	validates :price, presence: true, numericality: { in: 1..1000 }
 
 	validates :location, presence: true
 

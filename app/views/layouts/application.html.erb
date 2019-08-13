@@ -32,13 +32,9 @@
           </div>
         </div>
 
-<<<<<<< HEAD
-    
 
-=======
         <% if user_signed_in? %>
         
->>>>>>> devise
           <div class="profil">
             <form class="form-inline my-2 my-lg-0">
               <div class="btn-group">
@@ -47,23 +43,16 @@
                 </button>
                 
                   <div class="dropdown-menu">
-<<<<<<< HEAD
-                    <p><%= link_to "Ton profil", "#" %></p>
-                    <p> <%= link_to "Deconnecte-toi", "#" %></p>
-=======
+
                     <p><%= link_to "Ton profil", new_user_session_path %></p>
                     <p> <%= link_to "Deconnecte-toi", destroy_user_session_path, method: :delete %></p>
->>>>>>> devise
                   </div>
               
               </div>
             </form>
          </div>
-<<<<<<< HEAD
-=======
         
         <% else %>
->>>>>>> devise
 
           <div class="profil">
             <form class="form-inline my-2 my-lg-0">
@@ -73,24 +62,15 @@
                 </button>
                 
                   <div class="dropdown-menu">
-<<<<<<< HEAD
-                    <p><%= link_to "Crée ton compte", "#" %></p>
-                    <p> <%= link_to "Connecte-toi", "#" %></p>
-=======
                     <p><%= link_to "Crée ton compte", new_user_registration_path %></p>
                     <p> <%= link_to "Connecte-toi", new_user_session_path %></p>
->>>>>>> devise
                   </div>
               
               </div>
             </form>
           </div>
-<<<<<<< HEAD
-          
-=======
 
         <% end %>  
->>>>>>> devise
 
       </nav>
   </header>
@@ -108,9 +88,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </body>
-<<<<<<< HEAD
-</html>
-=======
 </html>
 
->>>>>>> devise

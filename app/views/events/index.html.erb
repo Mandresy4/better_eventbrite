@@ -18,19 +18,19 @@
 	<a class="btn btn-warning btn-lg" <%= link_to "Crée ton Event!", new_event_path %> </a>
 </div>
 
-<div class="contain">
+<div class="container event">
 	<div class="row">
 		<% @events.each do |event, id| %>
 
-			<div class="col-4">
+			<div class="col-lg-4 ev">
 				<div class="card" style="width: 20rem">
-					<%= image_tag("event.jpeg", :size => "319x220") %>
+					<%= image_tag("event.jpeg", :size => "320x220") %>
 
 				  <div class="card-body">
 				    <h5 class="card-title"> Titre: <%= link_to "#{event.title}", event_path(event.id)%></h5>
 				    <h5 class="card-text"> Profil: <%= event.admin.first_name %> </h5>
 				  </div>
-				  
+
 				</div>
 			</div>
 

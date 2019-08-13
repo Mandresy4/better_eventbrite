@@ -43,7 +43,7 @@
                 
                   <div class="dropdown-menu">
                     <p><%= link_to "Ton profil", new_user_session_path %></p>
-                    <p> <%= link_to "Deconnecte-toi", destroy_user_session_path %></p>
+                    <p> <%= link_to "Deconnecte-toi", destroy_user_session_path, method: :delete %></p>
                   </div>
               
               </div>

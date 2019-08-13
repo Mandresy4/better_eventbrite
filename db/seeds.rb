@@ -8,22 +8,45 @@
 
 
 require 'faker'
+require 'pry'
 
 
 User.destroy_all
+Event.destroy_all
 
-10.times do
+
+30.times do
+
 
 	first_name = Faker::Name.first_name
 	last_name = Faker::Name.last_name
 	email = "#{first_name.downcase}.#{last_name.downcase}@yopmail.com"
-
 	User.create(
 		first_name:first_name,
 		last_name:last_name,
 		email:email,
 		description:Faker::Quote.matz,
-		encrypted_password:Faker::Internet.password(min_length: 8)
+		password:Faker::Internet.password(min_length: 8)
 		)
 
 end
+
+
+6.times do
+	
+duration = [30, 40, 90, 75]
+
+	e = Event.new(
+		start_date:Faker::Date.between(from: Date.today, to: 2.month.from_now).to_datetime,
+		duration:duration.sample,
+		title:Faker::Quote.robin,
+		description:Faker::Quote.matz,
+		price:rand(1..1000),
+		location:Faker::Address.city,
+		admin:User.all.sample
+		)
+	
+	e.save
+	
+end
+

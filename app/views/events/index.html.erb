@@ -27,8 +27,8 @@
 					<%= image_tag("event.jpeg", :size => "320x220") %>
 
 				  <div class="card-body">
-				    <h5 class="card-title"> Titre: <%= link_to "#{event.title}", event_path(event.id)%></h5>
-				    <h5 class="card-text"> Profil: <%= event.admin.first_name %> </h5>
+				    <h5 class="card-title"><%= link_to "#{event.title}", event_path(event.id)%></h5>
+				    <p class="card-text"><%= event.start_date %> </p>
 				  </div>
 
 				</div>

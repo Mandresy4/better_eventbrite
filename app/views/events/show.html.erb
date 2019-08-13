@@ -1,2 +1,23 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container profil">
+
+  <div class="card mx-auto" style="width: 30rem">
+
+    <div class="card-header">
+      <h5 class="card-title"><%= @event.title %></h5>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= @event.description %>
+      </li>
+      <li class="list-group-item">Participants: <%= @event.users.count %>
+      </li>  
+      <li class="list-group-item">Organisateur: <%= @event.admin.email %>
+      </li>
+      <li class="list-group-item">Lieu: <%= @event.location%>
+      </li>
+      <li class="list-group-item">Prix: <%= @event.price%> euros
+      </li>
+
+    </ul>
+  </div>
+</div>

@@ -1,24 +1,6 @@
 
 
-
-
-
-<% if @user == current_user %>
-<div class="container-fluid">
-  <div class="button-show butprof">
-    <div class="button">
-      <a href="#" class="btn btn-warning btn-lg"> Editer mon profil </a>
-    </div>
-    <div class="button">
-      <a href="<%= edit_user_registration_path %>" class="btn btn-warning btn-lg">Modifier mon email et/ou mon mot de passe </a>
-    </div>
-  </div>
-</div>
-<% end %>
-
-
-
-<div class="container profil">
+<div class="container show">
 
   <div class="card mx-auto" style="width: 30rem">
 
@@ -39,6 +21,19 @@
     </ul>
   </div>
 </div>
+
+<% if @user == current_user %>
+<div class="container-fluid">
+  <div class="button-show butprof">
+    <div class="button">
+      <a href="#" class="btn btn-warning btn-lg"> Editer mon profil </a>
+    </div>
+    <div class="button">
+      <a href="<%= edit_user_registration_path %>" class="btn btn-warning btn-lg">Modifier mon email et/ou mon mot de passe </a>
+    </div>
+  </div>
+</div>
+<% end %>
 
 
 <div class="container event">

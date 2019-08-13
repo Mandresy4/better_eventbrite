@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     if @event.save 
 
     flash[:success] = "Ton event qui déchire a été ajouté dans la liste!"
-    redirect_to events_path
+    redirect_to event_path(@event.id)
 
     else
 

@@ -32,8 +32,8 @@
           </div>
         </div>
 
-    
-
+        <% if user_signed_in? %>
+        
           <div class="profil">
             <form class="form-inline my-2 my-lg-0">
               <div class="btn-group">
@@ -49,6 +49,8 @@
               </div>
             </form>
          </div>
+        
+        <% else %>
 
           <div class="profil">
             <form class="form-inline my-2 my-lg-0">
@@ -65,7 +67,8 @@
               </div>
             </form>
           </div>
-          
+
+        <% end %>  
 
       </nav>
   </header>

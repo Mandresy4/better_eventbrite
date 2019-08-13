@@ -53,3 +53,42 @@ $ heroku run rails db:create
 
 
 
+
+ <!-- 
+
+<div class="form container">
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+    
+    <div class="form-group">
+      <%= label_tag 'Nom' %><br>
+      <%= text_field_tag 'last_name' %>
+      <br /> <br />
+    </div>
+    
+    <div class="form-group">
+      <%= label_tag 'Prénom' %><br>
+      <%= text_field_tag 'first_name'%>
+      <br /> <br />
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'Description' %><br>
+      <%= textarea_field_tag 'description' %>
+      <br /> <br />
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'Email' %><br>
+      <%= text_field_tag 'email'%>
+      <br /> <br />
+    </div>
+
+
+    <%= submit_tag "Crée ton event" %>
+
+   <% end %>
+ </div>
+
+-->
+
+

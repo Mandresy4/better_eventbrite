@@ -12,3 +12,28 @@
 </div>
 
 </header>
+
+
+<div class="button">
+	<a class="btn btn-warning btn-lg" <%= link_to "Crée ton Event!", new_event_path %> </a>
+</div>
+
+<div class="contain">
+	<div class="row">
+		<% @events.each do |event, id| %>
+
+			<div class="col-4">
+				<div class="card" style="width: 20rem">
+					<%= image_tag("event.jpeg", :size => "319x220") %>
+
+				  <div class="card-body">
+				    <h5 class="card-title"> Titre: <%= link_to "#{event.title}", event_path(event.id)%></h5>
+				    <h5 class="card-text"> Profil: <%= event.admin.first_name %> </h5>
+				  </div>
+				  
+				</div>
+			</div>
+
+		<% end %>
+	</div>
+</div>

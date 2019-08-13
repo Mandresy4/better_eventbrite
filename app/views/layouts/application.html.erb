@@ -42,8 +42,8 @@
                 </button>
                 
                   <div class="dropdown-menu">
-                    <p><%= link_to "Ton profil", "#" %></p>
-                    <p> <%= link_to "Deconnecte-toi", "#" %></p>
+                    <p><%= link_to "Ton profil", new_user_session_path %></p>
+                    <p> <%= link_to "Deconnecte-toi", destroy_user_session_path %></p>
                   </div>
               
               </div>
@@ -58,8 +58,8 @@
                 </button>
                 
                   <div class="dropdown-menu">
-                    <p><%= link_to "Crée ton compte", "#" %></p>
-                    <p> <%= link_to "Connecte-toi", "#" %></p>
+                    <p><%= link_to "Crée ton compte", new_user_registration_path %></p>
+                    <p> <%= link_to "Connecte-toi", new_user_session_path %></p>
                   </div>
               
               </div>

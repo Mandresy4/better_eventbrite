@@ -1,5 +1,7 @@
 # Lien heroku : http://better-eventbrite.herokuapp.com/
 
+
+
 # gem Devise, choses à faire
 
 gem 'devise' dans Gemfile
@@ -41,45 +43,13 @@ ATTENTION: pas de controllers user généré....
 
 $ rails generate devise:views
 
-$ rails g controller static_pages index secret
+Mettre les liens des views
 
-    Il est assez pratique de réunir toutes tes pages statiques dans un seul et même controller.
+# Mettre dans environments/develepment config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
 
-Fais en sorte que static_pages#index soit la root de ton application
-==> dans routes.rb root 'static_pages#indes'
+$ git push heroku master
 
-Mettre texten dans app/views/static_pages/index.html.erb 
-
-	<ul>
-	  <% if user_signed_in? %>
-	    <li>
-	      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-	    </li>
-
-	    <li>
-	      Voici ton email : <%= current_user.email %>
-	    </li>
-
-	    <li>
-	      <%= link_to "Secret page", static_pages_secret_path %>
-	    </li>
-
-	    <li>
-	      <%= link_to "Edit email / password", edit_user_registration_path %>
-	    </li>
-
-	  <% else %>
-	    <li>    
-	      <%= link_to "Sign in", new_user_session_path %>
-	    </li>
-
-	    <li>
-	      <%= link_to "Sign up", new_user_registration_path %>
-	    </li>
-
-	  <% end %>
-	</ul>
-
+$ heroku run rails db:create
 
 
 

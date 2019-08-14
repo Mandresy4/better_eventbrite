@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	
+    @user = User.find(params[:id])
+    @events = @user.admin_for
   end
 
   def update

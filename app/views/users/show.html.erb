@@ -26,7 +26,7 @@
 <div class="container-fluid">
   <div class="button-show butprof">
     <div class="button">
-      <a href="#" class="btn btn-warning btn-lg"> Editer mon profil </a>
+      <a href="<%= edit_user_path(current_user.id)%>" class="btn btn-warning btn-lg"> Editer mon profil </a>
     </div>
     <div class="button">
       <a href="<%= edit_user_registration_path %>" class="btn btn-warning btn-lg">Modifier mon email et/ou mon mot de passe </a>
@@ -36,9 +36,10 @@
 <% end %>
 
 
+<% if @events != nil %>
 <div class="container event">
   <div class="row">
-    <% @user.events.each do |event| %>
+    <% @events.each do |event|%>
 
       <div class="col-lg-4 ev">
         <div class="card" style="width: 20rem">
@@ -55,6 +56,11 @@
     <% end %>
   </div>
 </div>
+<% else %>
+
+      <h5 class="card-title"> Pas d'event!</h5>
+
+<% end %>
 
   
  

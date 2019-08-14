@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     puts "#"*60
     puts params
     puts "#"*60
+    
     @event = Event.new(start_date:params[:start_date].to_datetime, duration:params[:duration], title:params[:title], description:params[:description], price:params[:price], location:params[:location], admin:current_user)
 
     if @event.save 

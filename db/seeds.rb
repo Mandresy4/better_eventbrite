@@ -13,6 +13,7 @@ require 'pry'
 
 User.destroy_all
 Event.destroy_all
+Attendance.destroy_all
 
 
 30.times do
@@ -41,12 +42,20 @@ duration = [30, 40, 90, 75]
 		duration:duration.sample,
 		title:Faker::Quote.robin,
 		description:Faker::Quote.matz,
-		price:rand(1..1000),
+		price:rand(20..100),
 		location:Faker::Address.city,
 		admin:User.all.sample
 		)
 	
 	e.save
 	
+end
+
+
+40.times do
+    a = Attendance.new(user: User.all.sample, event: Event.all.sample)
+    until a.save
+        a = Attendance.new(user: User.all.sample, event: Event.all.sample)
+    end
 end
 

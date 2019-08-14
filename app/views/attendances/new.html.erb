@@ -1,2 +1,38 @@
-<h1>Attendances#new</h1>
-<p>Find me in app/views/attendances/new.html.erb</p>
+
+
+
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+	
+	<div class="form-group">
+	  <%= label_tag 'Prénom' %><br>
+	  <%= text_field_tag 'first_name'%>
+	  <br /> <br />
+	</div>
+
+	<div class="form-group">
+	  <%= label_tag 'Nom' %><br>
+	  <%= text_field_tag 'last_name' %>
+	  <br /> <br />
+	</div>
+
+	<article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Montant: <%= @event.price %> €</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount= ""
+          data-locale="auto"></script>
+<% end %>
+
+
+

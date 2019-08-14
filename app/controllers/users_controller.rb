@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
   
-  before_action :authenticate_user!, only: [:show]
-  before_action :user_signed_in?, only: [:show]
+   before_action :authenticate_user!, only: [:show, :edit, :update]
 
   def show
   	puts "#"*60
   	puts params
   	puts "#"*60
   	@user = current_user
+    @events = @user.admins
   end
 
   def edit
-    @user = User.find(params[:id])
-    @events = @user.admin_for
+    # @user = User.find(params[:id])
+    
   end
 
   def update

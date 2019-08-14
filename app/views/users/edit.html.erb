@@ -1,2 +1,33 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<div class="container evinfo mx-auto">
+  <h3>Bienvenue sur l'edit de ton profil</h3>
+  <div class="container">
+    <h5>Tu peux enfin mettre ton nom et ton prénom, plus sympa pour les utilisateurs!</h5>
+  </div>
+</div>
+
+<div class="form container">
+  <%= form_tag url_for(action: 'update'), method: "patch" do %>
+    
+    <div class="form-group">
+      <%= label_tag 'Ton nom' %><br>
+      <%= text_field_tag 'last_name'%>
+      <br /> <br />
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'Ton prénom' %><br>
+      <%= text_field_tag 'first_name' %>
+      <br /> <br />
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'Un pti topo sur toi' %><br>
+      <%= text_field_tag 'description'%>
+      <br /> <br />
+    </div>
+
+
+    <%= submit_tag "Edit ton profil" %>
+
+   <% end %>
+ </div>

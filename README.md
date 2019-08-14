@@ -4,11 +4,11 @@
 
 # gem Devise, choses à faire
 
-gem 'devise' dans Gemfile
+## gem 'devise' dans Gemfile
 
-$ bundle install
+## $ bundle install
 
-$ rails generate devise:install
+## $ rails generate devise:install
 
 ==> fichier devise.rb dans config/initializers
 
@@ -20,16 +20,29 @@ $ rails generate devise:install
 
 Mettre config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } dans config/environments/develpment.rb
 
-$ rails g devise user 
+## $ rails g devise user 
 
 ==> va créer et modif notamment trois fichiers
 
 1) Le fichier de migration
 
-Si un model User existe déjà, AVEC des entrées similaires, genre :email et :encrypted_password
-==> supprimer ces colonnes
+    def self.up
+    => ce que devise va ajouter à la table en rails db:migrate
 
-Mettre la def change en def self.up et ce qui suit en def self.down remove_add_index
+    Si un model User existe déjà, AVEC des entrées similaires, genre :email et :encrypted_password
+    ==> supprimer ces colonnes
+
+    end
+
+    def self.down
+    => ce que devise devra enlever en rollback, cad ce qu'il ajoute!!
+
+    ex: remove_add_index
+        remove_column...
+    mettre éventuellement un begin/rescue/end
+
+    end
+
 
 2) Le fichier de model
 
@@ -39,17 +52,92 @@ RAS
 
 $ rails routes 
 
-ATTENTION: pas de controllers user généré....
+ATTENTION: pas de controllers devise user généré....
 
-$ rails generate devise:views
+# ATTENTION: mettre les routes devise en premier, sinon les routes des autres controllers, notamment users), vont croiser celles de devise!!!!!
+
+Par ex:
+
+    Rails.application.routes.draw do
+
+      devise_for :users
+      resources :users, only: [:show, :edit, :update]
+      resources :events
+
+      root 'events#index'
+      # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    end
+
+
+## $ rails generate devise:views
 
 Mettre les liens des views
 
+Devise utilise des helpers importants:
+
+- user_signed_in?
+=>s'utilise en condition d'accès à certaine page: "si l'utilisateur est connecté..."
+
+- current_user
+=> le user devient current_user quand l'utilisateur est connecté
+
+- athenticate_user!: 
+=> s'utilise dans les callbacks
+
+Pimpage de formulaires: ex
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <br><br><br>
+          <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
+            <h1 class="h3 mb-3 font-weight-normal text-center">Sign up</h1>
+            <%= devise_error_messages! %>
+            <div class="form-group">
+              <%= f.label :email, "Email" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            </div>
+            <div class="actions mt-5">
+              <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+            </div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+
+
+
 # Mettre dans environments/develepment config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
 
-$ git push heroku master
+## AVOIR COMMITÉ!!!!
 
-$ heroku run rails db:create
+## $ git push heroku master
+
+## $ heroku run rails db:create
+
+## $ heroku run rails db:migrate
+
+## $ heroku run rails db:seed
+
+# ATTENTION, POUR RENDRE LES IMAGES DANS HEROKU:
+
+==> dans config/environments/production.rb 
+
+Mettre "config.assets.compile = false" en "true"
+
+
 
 
 

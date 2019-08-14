@@ -1,4 +1,7 @@
 
+<div class="container evinfo mx-auto">
+  <h3>Bienvenue <%= @user.first_name %> sur ton profil</h3>
+</div>
 
 <div class="container show">
 
@@ -37,31 +40,31 @@
 
 
 <% if @events != nil %>
-<div class="container event">
-  <div class="row">
-    <% @events.each do |event|%>
 
-      <div class="col-lg-4 ev">
-        <div class="card" style="width: 20rem">
-          <%= image_tag("event.jpeg", :size => "320x220") %>
+  <div class="container event">
+    <div class="row">
+      <% @events.each do |event| %>
 
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to "#{event.title}", event_path(event.id)%></h5>
-            <p class="card-text"><%= event.start_date %> </p>
+        <div class="col-lg-4 ev">
+          <%= image_tag("event.jpeg", :size => "240x240", :class => "rounded-circle") %>
+          <div class="container evtxt">
+            <h5><%= link_to "#{event.title}", event_path(event.id)%></h5>
+            <p><%= event.start_date %> </p>
           </div>
-
         </div>
-      </div>
 
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<% else %>
+   <% else %>
 
-      <h5 class="card-title"> Pas d'event!</h5>
+  <h5 class="card-title"> Pas d'event!</h5>
 
+   <% end %>
 <% end %>
-<% end %>
+
+
+
 
   
  

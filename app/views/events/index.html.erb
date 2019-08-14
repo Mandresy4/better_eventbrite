@@ -15,7 +15,8 @@
 
 
 <div class="button">
-	<a class="btn btn-warning btn-lg" <%= link_to "Crée ton Event!", new_event_path %> </a>
+	<a class="btn btn-warning btn-lg" href="<%= new_event_path %>">Crée ton Event!
+	</a>
 </div>
 
 <div class="container event">
@@ -23,15 +24,11 @@
 		<% @events.each do |event, id| %>
 
 			<div class="col-lg-4 ev">
-				<div class="card" style="width: 20rem">
-					<%= image_tag("event.jpeg", :size => "320x220") %>
-
-				  <div class="card-body">
-				    <h5 class="card-title"><%= link_to "#{event.title}", event_path(event.id)%></h5>
-				    <p class="card-text"><%= event.start_date %> </p>
-				  </div>
-
-				</div>
+				<%= image_tag("event.jpeg", :size => "240x240", :class => "rounded-circle") %>
+				<div class="container evtxt">
+			    <h5><%= link_to "#{event.title}", event_path(event.id)%></h5>
+			    <p><%= event.start_date %> </p>
+		  	</div>
 			</div>
 
 		<% end %>

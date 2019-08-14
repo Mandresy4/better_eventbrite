@@ -27,16 +27,16 @@
 
 
 <% if current_user != @event.admin && @event.users.include?(current_user) == false %>
-    
 
-    <div class=" container button">
-          <a href="<%= new_event_attendance_path(@event.id) %>" class="btn btn-warning btn-lg"> Participer </a>
+    <div class="button">
+      <a href="<%= new_event_attendance_path(@event.id) %>" class="btn btn-warning btn-lg"> Participer </a>
     </div>
 <% end %>
 
 <% if current_user == @event.admin %>
-  <div class=" container button">
-        <a href="<%= event_attendances_path(@event.id) %>" class="btn btn-warning btn-lg">Liste des participants </a>
+
+  <div class="button">
+    <a href="<%= event_attendances_path(@event.id) %>" class="btn btn-warning btn-lg">Liste des participants </a>
   </div>
 <% end %>
 

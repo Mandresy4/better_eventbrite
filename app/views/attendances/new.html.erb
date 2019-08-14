@@ -1,38 +1,49 @@
 
 
+<div class="container evinfo mx-auto">
+  <h3>Recapitulatif de l'event <%= @event.title%> avant règlement</h3>
+</div>
 
+<div class="container show">
+  <div class="card mx-auto" style="width: 30rem">
+    <div class="card-header">
+      <h5 class="card-title"><%= @event.title %></h5>
+    </div>
 
-<%= form_tag url_for(action: 'create'), method: "post" do %>
-	
-	<div class="form-group">
-	  <%= label_tag 'Prénom' %><br>
-	  <%= text_field_tag 'first_name'%>
-	  <br /> <br />
-	</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= @event.description %>
+      </li>
+      <li class="list-group-item">Participants: <%= @event.users.count %>
+      </li>  
+      <li class="list-group-item">Organisateur: <%= @event.admin.email %>
+      </li>
+      <li class="list-group-item">Lieu: <%= @event.location%>
+      </li>
+      <li class="list-group-item">Prix: <%= @event.price%> euros
+      </li>
 
-	<div class="form-group">
-	  <%= label_tag 'Nom' %><br>
-	  <%= text_field_tag 'last_name' %>
-	  <br /> <br />
-	</div>
+    </ul>
+  </div>
+</div>
 
-	<article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Montant: <%= @event.price %> €</span>
-    </label>
-  </article>
+<div class="container pay">
+	<%= form_tag url_for(action: 'create'), method: "post" do %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount= ""
-          data-locale="auto"></script>
-<% end %>
+		<article>
+	    <% if flash[:error].present? %>
+	      <div id="error_explanation">
+	        <p><%= flash[:error] %></p>
+	      </div>
+	    <% end %>
+	  </article>
+
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+	          data-description="A month's subscription"
+	          data-amount= ""
+	          data-locale="auto"></script>
+	<% end %>
+</div>
 
 
 
